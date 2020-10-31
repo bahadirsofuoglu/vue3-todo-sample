@@ -7,7 +7,8 @@ export default Vuex.createStore({
     todos: []
   },
   mutations: {
-    [ACTION_TYPES.fetchTodos]: (state, todos) => (state.todos = todos)
+    [ACTION_TYPES.fetchTodos]: (state, todos) => (state.todos = todos),
+    [ACTION_TYPES.addTodo]: (state, todo) => state.todos.unshift(todo)
   },
   actions: {
     onFetchTodos: async ({ commit }) => {
@@ -15,6 +16,13 @@ export default Vuex.createStore({
         'https://jsonplaceholder.typicode.com/todos'
       )
       commit(ACTION_TYPES.fetchTodos, response.data)
+    },
+    onAddTodo: async ({ commit }, title) => {
+      const response = await Axios.post(
+        'https://jsonplaceholder.typicode.com/todos',
+        { title, completed: false }
+      )
+      commit(ACTION_TYPES.addTodo, response.data)
     }
   }
 })
