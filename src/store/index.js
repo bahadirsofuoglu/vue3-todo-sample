@@ -1,6 +1,8 @@
-import { createStore } from 'vuex'
+import { ACTION_TYPES } from '../constants/action-types'
+import Vuex from 'vuex'
 import Axios from 'axios'
-export default createStore({
+
+export default Vuex.createStore({
   state: {
     todos: []
   },
@@ -16,9 +18,3 @@ export default createStore({
     }
   }
 })
-export const ACTION_TYPES = {
-  fetchTodos: 'fetchTodos',
-  addTodo: 'addTodo',
-  deleteTodo: 'deleteTodo',
-  updateTodo: 'updateTodo'
-}
