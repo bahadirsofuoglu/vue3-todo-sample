@@ -1,5 +1,5 @@
 # vue3-todo-sample
-
+My first Vue 3 sample.
 ## Project setup
 ```
 npm install
